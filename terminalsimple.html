@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<!--- Title, CHARSET, other meta elements, including my css --->
+  <title>Lumbini Story</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="terminalstyle.css">
+  <link href="https://fonts.googleapis.com/css?family=Rhodium+Libre" rel="stylesheet">
+
+</head>
+
+<body onclick="clickFocus()">
+
+
+<div id="before-preload">it goes something like this...</div>
+<!--- so as far as i can tell you need to pass "event" because you're passing
+the entire... like the entire thing that happened, the entire event --->
+<span class="currentinput" contenteditable="true" onkeydown="checkEnter(event)"></span>
+
+<!--- Javascript and JQuery included here --->
+<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+<script src='js/monasticjssimple.js'></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var initial = $('.currentinput').first();
+    initial.focus();
+  });
+</script>
+
+</body>
+
+</html>
