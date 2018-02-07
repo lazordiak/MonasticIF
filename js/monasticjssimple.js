@@ -306,6 +306,10 @@ function checkInput(e) {
 
   if (textInput === "i") {
     text = inventory;
+    var inventElement = document.createElement("div");
+    var textNode = document.createTextNode(text);
+    inventElement.appendChild(textNode);
+    document.body.appendChild(inventElement);
   } else if (textInput === "help") {
     text =
       "Commands: \
