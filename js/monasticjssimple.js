@@ -128,7 +128,7 @@ const storyText = [
     steps: 33,
     text:
       "The trees are in pretty lines here. They are \
-  each on a mound that looks a little like a grave. Two scrows scream at each other."
+  each on a mound that looks a little like a grave. Two crows scream at each other."
   },
   {
     picture: "11.jpg",
@@ -157,14 +157,14 @@ const storyText = [
     text:
       "You pass the abandoned Japanese temple. They \
   haven't worked on it for years. You hear the Japanese government reached a deal \
-  to continue construction."
+  to continue construction. It could be true."
   },
   {
     picture: "15.jpg",
     steps: 197,
     text:
       "You say hello to the guard and he lets you \
-  into the abandoned monastery. It is peaceful in the basement. Water is filling \
+  into the abandoned temple. It is peaceful in the basement. Water is filling \
   the foundations. There are bird tracks in the mud. There are little fish in the \
   little pools. How did fish get in here?"
   },
@@ -187,16 +187,15 @@ const storyText = [
     steps: 218,
     text:
       "You stop by the Austrian temple. Austria is \
-  not well known in Nepal so they call it the 'Australian Temple'. Inside there is \
-  chocolate biscuits and tea. On the wall are reproductions of Rothko paintings."
+  not well known in Nepal so most people call it the 'Australian Temple'. Inside \
+  there is chocolate biscuits and tea. On the wall are reproduction Rothko paintings."
   },
   {
     picture: "18.jpg",
     steps: 379,
     text:
-      "The Vietnamese temple will also probably \
-  never be finished. Shingles fall off the bridge. The gate is rusted shut. Lotus \
-  flowers grow in the pond."
+      "The Vietnamese temple will also probably never be finished. Shingles fall \
+  off the bridge. The gate is rusted shut. Lotus flowers grow in the pond."
   },
   {
     picture: "20.jpg",
@@ -217,7 +216,7 @@ const storyText = [
     steps: 115,
     text:
       "From the top of the bridge you see a huge \
-  amphitheater. Someone else is taking pictures there. They seem unhappy with \
+  amphitheater. Two men are taking pictures down there. They seem unhappy with \
   how their pictures turned out."
   },
   {
@@ -232,8 +231,8 @@ const storyText = [
     picture: "24.jpg",
     steps: 32,
     text:
-      "The excavation here looks like a grave. It's \
-  filling with water, even though it hasn't rained in months."
+      "There is some sort of excavation here. It looks like a grave. It's \
+  filling with water somehow, even though it hasn't rained in months."
   },
   {
     picture: "25.jpg",
@@ -254,7 +253,7 @@ const storyText = [
     text:
       "There is a bird on a telephone wire. Purnam \
   keeps talking about 'water crows', but you don't think these are what he is \
-  referring to."
+  referring to. The sun is going down."
   },
   {
     picture: "28.jpg",
@@ -311,13 +310,20 @@ function checkInput(e) {
     inventElement.appendChild(textNode);
     document.body.appendChild(inventElement);
   } else if (textInput === "help") {
-    text =
-      "Commands: \
-        i - bring up inventory, \
-        help - bring up list of commands, \
-        walk (x) - walk forward x steps, \
-        back (x) - walk backwards x steps, \
-        look - find the location of the nearest landmark.";
+      text = [
+        "Commands:",
+        "i - bring up inventory, ",
+        "help - bring up list of commands, ",
+        "walk (x) - walk forward x steps, ",
+        "back (x) - walk backwards x steps, ",
+        "look - find the location of the nearest landmark."
+      ];
+      for (i = 0; i < text.length; i++) {
+        var inventElement = document.createElement("div");
+        var textNode = document.createTextNode(text[i]);
+        inventElement.appendChild(textNode);
+        document.body.appendChild(inventElement);
+      }
   } else if (textInput === "look") {
     looker(e);
   } else if (textInput.toLowerCase().indexOf("walk") != -1) {
@@ -341,12 +347,12 @@ function backer(e) {
   console.log("back my kickstarter");
 }
 
-/*here is what i can do:
-make it so the checkenter function applies to the document, not just the element
-then make the actual function:
-check to see if its enter
-if its enter
-find the first element with a contenteditable that's true (should only be one)
-change the current contenteditable to False
-and create a new element thats a blank contenteditable=true
+/*to do
+figure out preloading
+use "hidden" and "show" to show:
+1. preloading screen
+2. intro screen and then when "begin is typed"
+3. game starts
+
+finish parser
 */
