@@ -3,60 +3,18 @@
 var steps = 0;
 const stepsTotal = 6190;
 
-//reference to all the pictures
-const imageList = [
-  "1.jpg",
-  "2.jpg",
-  "3.jpg",
-  "4.jpg",
-  "5.jpg",
-  "6.jpg",
-  "7.jpg",
-  "8.jpg",
-  "9.jpg",
-  "10.jpg",
-  "11.jpg",
-  "12.jpg",
-  "13.jpg",
-  "14.jpg",
-  "15.jpg",
-  "16.jpg",
-  "17.jpg",
-  "18.jpg",
-  "19.jpg",
-  "20.jpg",
-  "21.jpg",
-  "22.jpg",
-  "23.jpg",
-  "24.jpg",
-  "25.jpg",
-  "26.jpg",
-  "27.jpg",
-  "28.jpg",
-  "29.jpg"
-];
-
-//list of valid commands
-/*
-i (inventory)
-help (lists commands)
-walk (walks x steps)
-back (walks back x steps)
-look (shows something if its there, otherwise shows next thing ahead)
-*/
-
 //the "story object" containing the pic, at which stepnumber its located, and text
 //to be displayed
 const storyText = [
   {
-    picture: "1.jpg",
+    picture: "images/1.jpg",
     steps: 0,
     text:
       "You are at the gates of the Bodhi Institute. \
   Beyond you lies the rest of the monastic zone."
   },
   {
-    picture: "2.jpg",
+    picture: "images/2.jpg",
     steps: 331,
     text:
       "Jumai's helping with construction here. \
@@ -66,14 +24,14 @@ const storyText = [
   by large wire frames. You slip through them and keep going."
   },
   {
-    picture: "3.jpg",
+    picture: "images/3.jpg",
     steps: 75,
     text:
       "You see some sort of building off the road. \
   Nobody seems to be there. You wonder what it's for."
   },
   {
-    picture: "4.jpg",
+    picture: "images/4.jpg",
     steps: 446,
     text:
       "At one end of the canal is the UN peace flame. \
@@ -83,7 +41,7 @@ const storyText = [
   in. You turn right instead."
   },
   {
-    picture: "5.jpg",
+    picture: "images/5.jpg",
     steps: 129,
     text:
       "Between the place where they launch boats full \
@@ -91,7 +49,7 @@ const storyText = [
   you see a patch of seaweed. It sways in the water."
   },
   {
-    picture: "6.jpg",
+    picture: "images/6.jpg",
     steps: 533,
     text:
       "Two men stop and ask if they can take a picture with \
@@ -99,7 +57,7 @@ const storyText = [
   about."
   },
   {
-    picture: "7.jpg",
+    picture: "images/7.jpg",
     steps: 483,
     text:
       "You sit in the Chinese temple. The whole \
@@ -110,49 +68,49 @@ const storyText = [
   than regulation, but they both give a lot of money, so no one stops them."
   },
   {
-    picture: "8.jpg",
+    picture: "images/8.jpg",
     steps: 75,
     text:
       "The Korean temple is very big and made of \
   concrete. It's the kind of temple a ghost would haunt, you think."
   },
   {
-    picture: "9.jpg",
+    picture: "images/9.jpg",
     steps: 103,
     text:
       "This place does not exist. You don't know \
   what it is supposed to be."
   },
   {
-    picture: "10.jpg",
+    picture: "images/10.jpg",
     steps: 33,
     text:
       "The trees are in pretty lines here. They are \
   each on a mound that looks a little like a grave. Two crows scream at each other."
   },
   {
-    picture: "11.jpg",
+    picture: "images/11.jpg",
     steps: 375,
     text:
       "This is the edge of the zone. There's not much \
   here. No cars come down the road. The grass waves in the wind."
   },
   {
-    picture: "12.jpg",
+    picture: "images/12.jpg",
     steps: 238,
     text:
       "A group of temples surround a little island here. \
   This is always the most crowded part of the zone. You sit and people watch."
   },
   {
-    picture: "13.jpg",
+    picture: "images/13.jpg",
     steps: 321,
     text:
       "Are they getting good TV in there? You wonder. \
   The sky is very blue."
   },
   {
-    picture: "14.jpg",
+    picture: "images/14.jpg",
     steps: 337,
     text:
       "You pass the abandoned Japanese temple. They \
@@ -160,7 +118,7 @@ const storyText = [
   to continue construction. It could be true."
   },
   {
-    picture: "15.jpg",
+    picture: "images/15.jpg",
     steps: 197,
     text:
       "You say hello to the guard and he lets you \
@@ -169,21 +127,21 @@ const storyText = [
   little pools. How did fish get in here?"
   },
   {
-    picture: "16.jpg",
+    picture: "images/16.jpg",
     steps: 106,
     text:
       "On your way out you see a small gecko. The guard \
   thinks you are looking for the bathroom."
   },
   {
-    picture: "17.jpg",
+    picture: "images/17.jpg",
     steps: 434,
     text:
       "This is where the Mongolian temple was \
   supposed to be. They haven't built anything yet."
   },
   {
-    picture: "19.jpg",
+    picture: "images/19.jpg",
     steps: 218,
     text:
       "You stop by the Austrian temple. Austria is \
@@ -191,14 +149,14 @@ const storyText = [
   there is chocolate biscuits and tea. On the wall are reproduction Rothko paintings."
   },
   {
-    picture: "18.jpg",
+    picture: "images/18.jpg",
     steps: 379,
     text:
       "The Vietnamese temple will also probably never be finished. Shingles fall \
   off the bridge. The gate is rusted shut. Lotus flowers grow in the pond."
   },
   {
-    picture: "20.jpg",
+    picture: "images/20.jpg",
     steps: 350,
     text:
       "There is a discarded bag of Kurkure on the road. \
@@ -206,13 +164,13 @@ const storyText = [
   from India."
   },
   {
-    picture: "21.jpg",
+    picture: "images/21.jpg",
     steps: 522,
     text: "Faded prayer flags hang from this tree. Who \
   put them there?"
   },
   {
-    picture: "22.jpg",
+    picture: "images/22.jpg",
     steps: 115,
     text:
       "From the top of the bridge you see a huge \
@@ -220,7 +178,7 @@ const storyText = [
   how their pictures turned out."
   },
   {
-    picture: "23.jpg",
+    picture: "images/23.jpg",
     steps: 65,
     text:
       "The sun on the water is striking. The two \
@@ -228,27 +186,27 @@ const storyText = [
   best and hope it turns out ok."
   },
   {
-    picture: "24.jpg",
+    picture: "images/24.jpg",
     steps: 32,
     text:
       "There is some sort of excavation here. It looks like a grave. It's \
   filling with water somehow, even though it hasn't rained in months."
   },
   {
-    picture: "25.jpg",
+    picture: "images/25.jpg",
     steps: 15,
     text: "There is a twisting path leading off the main \
   road. You take it."
   },
   {
-    picture: "26.jpg",
+    picture: "images/26.jpg",
     steps: 247,
     text:
       "The sign is for a right turn, but there is \
   no right turn here. Maybe the sign was misplaced. You are close to Bodhi."
   },
   {
-    picture: "27.jpg",
+    picture: "images/27.jpg",
     steps: 235,
     text:
       "There is a bird on a telephone wire. Purnam \
@@ -256,7 +214,7 @@ const storyText = [
   referring to. The sun is going down."
   },
   {
-    picture: "28.jpg",
+    picture: "images/28.jpg",
     steps: 127,
     text:
       "You are back at Bodhi. The monks are \
@@ -291,7 +249,7 @@ function makeNewInput(e) {
 
   //then the part where it checks to see if its the proper place to input
   //this or that other image
-  var newInputText = checkInput(e);
+  checkInput(e);
 
   document.body.appendChild(newInput);
   document.querySelector(".currentinput").innerHTML = " ";
@@ -319,32 +277,114 @@ function checkInput(e) {
         "look - find the location of the nearest landmark."
       ];
       for (i = 0; i < text.length; i++) {
-        var inventElement = document.createElement("div");
+        var commandElement = document.createElement("div");
         var textNode = document.createTextNode(text[i]);
-        inventElement.appendChild(textNode);
-        document.body.appendChild(inventElement);
+        commandElement.appendChild(textNode);
+        document.body.appendChild(commandElement);
       }
   } else if (textInput === "look") {
-    looker(e);
+    looker();
   } else if (textInput.toLowerCase().indexOf("walk") != -1) {
     walker(e);
   } else if (textInput.toLowerCase().indexOf("back") != -1) {
     backer(e);
+  } else if (textInput === "steps") {
+    var stepsElement = document.createElement("div");
+    var textNode = document.createTextNode(steps.toString());
+    stepsElement.appendChild(textNode);
+    document.body.appendChild(stepsElement);
   } else {
-    console.log("hi");
+    console.log("You found me");
   }
 }
 
-function looker(e) {
-  console.log("Hello world");
+
+function looker() {
+
+  var stepsMatch = false;
+
+  //if the steps attribute of any of the story ojects matches the number of steps
+  //taken (i.e. the player is at that many steps) then display the image and
+  //text associated with the story element
+  for (i = 0; i < storyText.length; i++) {
+
+    if ([i].steps === steps) {
+
+      var picElement = document.createElement("img");
+      picElement.setAttribute("src", [i].picture);
+      picElement.setAttribute("alt", "Lumbini Pic");
+      document.body.appendChild(picElement);
+
+      var lookElement = document.createElement("div");
+      var textNode = document.createTextNode([i].text);
+      lookElement.appendChild(textNode);
+      document.body.appendChild(lookElement);
+
+      //so we dont do the next function
+      stepsMatch = true;
+
+    }
+
+    //if none of the objects' steps match with number of steps taken, find the
+    //nearest object
+    if (stepsMatch === false) {
+
+      looker2();
+
+    }
+  }
+  /*
+  if current number is bigger than other number:
+  "You see something x steps behind you"
+  if current number is smaller than other number:
+  "you see something x steps ahead of you"
+  */
+}
+
+function looker2() {
+
+  for (i = 0; i < storyText.length; i++) {
+
+    var behind = steps - [i].steps;
+    var ahead = steps - [i+1].steps;
+
+    if ((behind > 0) && (ahead < 0)) {
+
+      if (behind < -ahead) {
+        var lookElement = document.createElement("div");
+        var textNode = document.createTextNode("You see something "+behind.toString()+" steps behind you.");
+        lookElement.appendChild(textNode);
+        document.body.appendChild(lookElement);
+      } else {
+        var lookElement = document.createElement("div");
+        var textNode = document.createTextNode("You see something "+ahead.toString()+" steps ahead of you.");
+        lookElement.appendChild(textNode);
+        document.body.appendChild(lookElement);
+      }
+    }
+  }
 }
 
 function walker(e) {
   console.log("Goodbye world");
+  /*
+  steps += turn input into a number
+  if steps equals any of the numbers in any of the objects
+  return the whole shebang
+  if steps equals or is bigger than steps total
+  end it
+  */
 }
 
 function backer(e) {
   console.log("back my kickstarter");
+  /*
+  steps += turn input into a negative number
+  if steps equals any of the numbers in any of the objects
+  return the whole shebang
+  if steps is less than zero
+  "you decide to go back"
+  */
 }
 
 /*to do
