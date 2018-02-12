@@ -36,8 +36,8 @@ const storyText = [
     text:
       "At one end of the canal is the UN peace flame. \
   This is where the path begins to Mayadevi temple, where the Buddha was born. \
-  You think about the rebuilt temple and the Bodhi tree, but the path is filled with \
-  beggars who cross the border from India and as a foreigner you have to pay to get \
+  You think about the rebuilt temple and the big tree, but the path is filled with \
+  beggars who cross the border from India and foreigners have to pay to get \
   in. You turn right instead."
   },
   {
@@ -46,15 +46,15 @@ const storyText = [
     text:
       "Between the place where they launch boats full \
   of tourists to the other end of the canal and the spot where the rickshaws gather \
-  you see a patch of seaweed. It sways in the water."
+  you see a patch of seaweed. It looks nice in the sun."
   },
   {
     picture: "images/6.jpg",
     steps: 533,
     text:
       "Two men stop and ask if they can take a picture with \
-  you. This happens often. Today you take a picture of them, which they seem surprised \
-  about."
+  you. This happens often. Today you take a picture of them, too, which they \
+  seem surprised about."
   },
   {
     picture: "images/7.jpg",
@@ -86,7 +86,7 @@ const storyText = [
     steps: 33,
     text:
       "The trees are in pretty lines here. They are \
-  each on a mound that looks a little like a grave. Two crows scream at each other."
+  each on a little mound. Two crows scream at each other."
   },
   {
     picture: "images/11.jpg",
@@ -100,7 +100,8 @@ const storyText = [
     steps: 238,
     text:
       "A group of temples surround a little island here. \
-  This is always the most crowded part of the zone. You sit and people watch."
+  This is always the most crowded part of the zone. This is the place \
+  to people watch."
   },
   {
     picture: "images/13.jpg",
@@ -114,7 +115,7 @@ const storyText = [
     steps: 337,
     text:
       "You pass the abandoned Japanese temple. They \
-  haven't worked on it for years. You hear the Japanese government reached a deal \
+  haven't worked on it for years. They say the Japanese government reached a deal \
   to continue construction. It could be true."
   },
   {
@@ -146,7 +147,7 @@ const storyText = [
     text:
       "You stop by the Austrian temple. Austria is \
   not well known in Nepal so most people call it the 'Australian Temple'. Inside \
-  there is chocolate biscuits and tea. On the wall are reproduction Rothko paintings."
+  there are chocolate biscuits and tea. On the wall are reproduction Rothko paintings."
   },
   {
     picture: "images/18.jpg",
@@ -229,7 +230,7 @@ your backpack is your sketchbook, some medicine, and too many odds and ends to n
 //function that focuses on current input
 function clickFocus() {
   var currentFocus = document.getElementsByClassName("currentinput")[0];
-  body.currentFocus.focus();
+  currentFocus.focus();
 }
 
 function checkEnter(e) {
@@ -261,12 +262,14 @@ function checkInput(e) {
   var textInput = e.target.textContent;
   var text = "";
 
+  //pulls up inventory
   if (textInput === "i") {
     text = inventory;
     var inventElement = document.createElement("div");
     var textNode = document.createTextNode(text);
     inventElement.appendChild(textNode);
     document.body.appendChild(inventElement);
+  //pulls up list of commands
   } else if (textInput === "help") {
       text = [
         "Commands:",
@@ -274,7 +277,8 @@ function checkInput(e) {
         "help - bring up list of commands, ",
         "walk (x) - walk forward x steps, ",
         "back (x) - walk backwards x steps, ",
-        "look - find the location of the nearest landmark."
+        "look - find the location of the nearest landmark, ",
+        "steps - shows you how far you've done."
       ];
       for (i = 0; i < text.length; i++) {
         var commandElement = document.createElement("div");
@@ -282,12 +286,16 @@ function checkInput(e) {
         commandElement.appendChild(textNode);
         document.body.appendChild(commandElement);
       }
+  //pulls up "look" function
   } else if (textInput === "look") {
     looker();
-  } else if (textInput.toLowerCase().indexOf("walk") != -1) {
+  //steps you forward
+  } else if (textInput.indexOf("walk") != -1) {
     walker(e);
-  } else if (textInput.toLowerCase().indexOf("back") != -1) {
+  //steps you backwards
+  } else if (textInput.indexOf("back") != -1) {
     backer(e);
+  //shows you how many steps you have
   } else if (textInput === "steps") {
     var stepsElement = document.createElement("div");
     var textNode = document.createTextNode(steps.toString());
@@ -298,7 +306,7 @@ function checkInput(e) {
   }
 }
 
-
+//function for when the input is "look"
 function looker() {
 
   var stepsMatch = false;
@@ -308,15 +316,17 @@ function looker() {
   //text associated with the story element
   for (i = 0; i < storyText.length; i++) {
 
-    if ([i].steps === steps) {
+    //console.log(storyText[i])
+
+    if (storyText[i].steps === steps) {
 
       var picElement = document.createElement("img");
-      picElement.setAttribute("src", [i].picture);
+      picElement.setAttribute("src", storyText[i].picture);
       picElement.setAttribute("alt", "Lumbini Pic");
       document.body.appendChild(picElement);
 
       var lookElement = document.createElement("div");
-      var textNode = document.createTextNode([i].text);
+      var textNode = document.createTextNode(storyText[i].text);
       lookElement.appendChild(textNode);
       document.body.appendChild(lookElement);
 
@@ -343,12 +353,22 @@ function looker() {
 
 function looker2() {
 
-  for (i = 0; i < storyText.length; i++) {
+  var totalSteps = 0;
+  var nextSteps = 0;
 
-    var behind = steps - [i].steps;
-    var ahead = steps - [i+1].steps;
+  for (i = 0; i < (storyText.length - 1); i++) {
 
-    if ((behind > 0) && (ahead < 0)) {
+    //CANT ALWAYS BE I+1 OR ELSE YOU'LL GO BEYOND THE THING
+// its printing because im not subtracting by total amount of steps,
+//just steps between two things which may very possibly be less than the amount
+//of steps ive taken
+    totalSteps = totalSteps + storyText[i].steps;
+    nextSteps = nextSteps + storyText[i+1].steps;
+
+    var behind = steps - totalSteps;
+    var ahead = steps - nextSteps;
+
+    if (totalSteps < steps < nextSteps) {
 
       if (behind < -ahead) {
         var lookElement = document.createElement("div");
@@ -361,12 +381,36 @@ function looker2() {
         lookElement.appendChild(textNode);
         document.body.appendChild(lookElement);
       }
+
     }
   }
 }
 
 function walker(e) {
-  console.log("Goodbye world");
+
+  var splitInput = e.target.textContent.split(" ");
+  var numberInput = Number(splitInput[1])
+
+  steps = steps + numberInput
+
+  for (i = 0; i < storyText.length; i++) {
+
+    //console.log(storyText[i])
+
+    if (storyText[i].steps === steps) {
+
+      var picElement = document.createElement("img");
+      picElement.setAttribute("src", storyText[i].picture);
+      picElement.setAttribute("alt", "Lumbini Pic");
+      document.body.appendChild(picElement);
+
+      var lookElement = document.createElement("div");
+      var textNode = document.createTextNode(storyText[i].text);
+      lookElement.appendChild(textNode);
+      document.body.appendChild(lookElement);
+
+    }
+  }
   /*
   steps += turn input into a number
   if steps equals any of the numbers in any of the objects
@@ -377,7 +421,31 @@ function walker(e) {
 }
 
 function backer(e) {
-  console.log("back my kickstarter");
+
+  var splitInput = e.target.textContent.split(" ");
+  var numberInput = Number(splitInput[1])
+  console.log(numberInput)
+
+  steps = steps - numberInput
+
+  for (i = 0; i < storyText.length; i++) {
+
+    //console.log(storyText[i])
+
+    if (storyText[i].steps === steps) {
+
+      var picElement = document.createElement("img");
+      picElement.setAttribute("src", storyText[i].picture);
+      picElement.setAttribute("alt", "Lumbini Pic");
+      document.body.appendChild(picElement);
+
+      var lookElement = document.createElement("div");
+      var textNode = document.createTextNode(storyText[i].text);
+      lookElement.appendChild(textNode);
+      document.body.appendChild(lookElement);
+
+    }
+  }
   /*
   steps += turn input into a negative number
   if steps equals any of the numbers in any of the objects
