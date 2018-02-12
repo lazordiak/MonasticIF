@@ -1,7 +1,7 @@
 //---------------------------GLOBAL VARIABLES---------------------------------//
 //how many steps one has taken and can take total
 var steps = 0;
-const stepsTotal = 6190;
+const stepsTotal = 6521;
 
 //the "story object" containing the pic, at which stepnumber its located, and text
 //to be displayed
@@ -25,14 +25,14 @@ const storyText = [
   },
   {
     picture: "images/3.jpg",
-    steps: 75,
+    steps: 406,
     text:
       "You see some sort of building off the road. \
   Nobody seems to be there. You wonder what it's for."
   },
   {
     picture: "images/4.jpg",
-    steps: 446,
+    steps: 852,
     text:
       "At one end of the canal is the UN peace flame. \
   This is where the path begins to Mayadevi temple, where the Buddha was born. \
@@ -42,7 +42,7 @@ const storyText = [
   },
   {
     picture: "images/5.jpg",
-    steps: 129,
+    steps: 981,
     text:
       "Between the place where they launch boats full \
   of tourists to the other end of the canal and the spot where the rickshaws gather \
@@ -50,7 +50,7 @@ const storyText = [
   },
   {
     picture: "images/6.jpg",
-    steps: 533,
+    steps: 1514,
     text:
       "Two men stop and ask if they can take a picture with \
   you. This happens often. Today you take a picture of them, too, which they \
@@ -58,7 +58,7 @@ const storyText = [
   },
   {
     picture: "images/7.jpg",
-    steps: 483,
+    steps: 1997,
     text:
       "You sit in the Chinese temple. The whole \
   place is filled with one huge bench, so there's always a place to sit. Sometimes \
@@ -69,35 +69,35 @@ const storyText = [
   },
   {
     picture: "images/8.jpg",
-    steps: 75,
+    steps: 2072,
     text:
       "The Korean temple is very big and made of \
   concrete. It's the kind of temple a ghost would haunt, you think."
   },
   {
     picture: "images/9.jpg",
-    steps: 103,
+    steps: 2175,
     text:
       "This place does not exist. You don't know \
   what it is supposed to be."
   },
   {
     picture: "images/10.jpg",
-    steps: 33,
+    steps: 2208,
     text:
       "The trees are in pretty lines here. They are \
   each on a little mound. Two crows scream at each other."
   },
   {
     picture: "images/11.jpg",
-    steps: 375,
+    steps: 2583,
     text:
       "This is the edge of the zone. There's not much \
   here. No cars come down the road. The grass waves in the wind."
   },
   {
     picture: "images/12.jpg",
-    steps: 238,
+    steps: 2821,
     text:
       "A group of temples surround a little island here. \
   This is always the most crowded part of the zone. This is the place \
@@ -105,14 +105,14 @@ const storyText = [
   },
   {
     picture: "images/13.jpg",
-    steps: 321,
+    steps: 3142,
     text:
       "Are they getting good TV in there? You wonder. \
   The sky is very blue."
   },
   {
     picture: "images/14.jpg",
-    steps: 337,
+    steps: 3479,
     text:
       "You pass the abandoned Japanese temple. They \
   haven't worked on it for years. They say the Japanese government reached a deal \
@@ -120,7 +120,7 @@ const storyText = [
   },
   {
     picture: "images/15.jpg",
-    steps: 197,
+    steps: 3676,
     text:
       "You say hello to the guard and he lets you \
   into the abandoned temple. It is peaceful in the basement. Water is filling \
@@ -129,21 +129,21 @@ const storyText = [
   },
   {
     picture: "images/16.jpg",
-    steps: 106,
+    steps: 3782,
     text:
       "On your way out you see a small gecko. The guard \
   thinks you are looking for the bathroom."
   },
   {
     picture: "images/17.jpg",
-    steps: 434,
+    steps: 4216,
     text:
       "This is where the Mongolian temple was \
   supposed to be. They haven't built anything yet."
   },
   {
     picture: "images/19.jpg",
-    steps: 218,
+    steps: 4434,
     text:
       "You stop by the Austrian temple. Austria is \
   not well known in Nepal so most people call it the 'Australian Temple'. Inside \
@@ -151,14 +151,14 @@ const storyText = [
   },
   {
     picture: "images/18.jpg",
-    steps: 379,
+    steps: 4813,
     text:
       "The Vietnamese temple will also probably never be finished. Shingles fall \
   off the bridge. The gate is rusted shut. Lotus flowers grow in the pond."
   },
   {
     picture: "images/20.jpg",
-    steps: 350,
+    steps: 5163,
     text:
       "There is a discarded bag of Kurkure on the road. \
   You're familiar with the brand, but not this particular packaging. It might be \
@@ -166,13 +166,13 @@ const storyText = [
   },
   {
     picture: "images/21.jpg",
-    steps: 522,
+    steps: 5685,
     text: "Faded prayer flags hang from this tree. Who \
   put them there?"
   },
   {
     picture: "images/22.jpg",
-    steps: 115,
+    steps: 5800,
     text:
       "From the top of the bridge you see a huge \
   amphitheater. Two men are taking pictures down there. They seem unhappy with \
@@ -180,7 +180,7 @@ const storyText = [
   },
   {
     picture: "images/23.jpg",
-    steps: 65,
+    steps: 5865,
     text:
       "The sun on the water is striking. The two \
   men from before see you and ask you to take their picture for them. You do your \
@@ -188,27 +188,27 @@ const storyText = [
   },
   {
     picture: "images/24.jpg",
-    steps: 32,
+    steps: 5897,
     text:
       "There is some sort of excavation here. It looks like a grave. It's \
   filling with water somehow, even though it hasn't rained in months."
   },
   {
     picture: "images/25.jpg",
-    steps: 15,
+    steps: 5912,
     text: "There is a twisting path leading off the main \
   road. You take it."
   },
   {
     picture: "images/26.jpg",
-    steps: 247,
+    steps: 6159,
     text:
       "The sign is for a right turn, but there is \
   no right turn here. Maybe the sign was misplaced. You are close to Bodhi."
   },
   {
     picture: "images/27.jpg",
-    steps: 235,
+    steps: 6394,
     text:
       "There is a bird on a telephone wire. Purnam \
   keeps talking about 'water crows', but you don't think these are what he is \
@@ -216,7 +216,7 @@ const storyText = [
   },
   {
     picture: "images/28.jpg",
-    steps: 127,
+    steps: 6521,
     text:
       "You are back at Bodhi. The monks are \
   sweeping the walk. The gate is open."
@@ -353,22 +353,20 @@ function looker() {
 
 function looker2() {
 
-  var totalSteps = 0;
-  var nextSteps = 0;
-
   for (i = 0; i < (storyText.length - 1); i++) {
 
     //CANT ALWAYS BE I+1 OR ELSE YOU'LL GO BEYOND THE THING
 // its printing because im not subtracting by total amount of steps,
 //just steps between two things which may very possibly be less than the amount
 //of steps ive taken
-    totalSteps = totalSteps + storyText[i].steps;
-    nextSteps = nextSteps + storyText[i+1].steps;
 
-    var behind = steps - totalSteps;
-    var ahead = steps - nextSteps;
+    if ((storyText[i].steps < steps) && (steps < storyText[i+1].steps)) {
+      console.log("HELLO BIG BIRD");
 
-    if (totalSteps < steps < nextSteps) {
+      var behind = steps - storyText[i].steps;
+      var ahead = steps - storyText[i+1].steps;
+
+      var positiveAhead = (-1 * ahead)
 
       if (behind < -ahead) {
         var lookElement = document.createElement("div");
@@ -377,7 +375,7 @@ function looker2() {
         document.body.appendChild(lookElement);
       } else {
         var lookElement = document.createElement("div");
-        var textNode = document.createTextNode("You see something "+ahead.toString()+" steps ahead of you.");
+        var textNode = document.createTextNode("You see something "+positiveAhead.toString()+" steps ahead of you.");
         lookElement.appendChild(textNode);
         document.body.appendChild(lookElement);
       }
@@ -411,13 +409,6 @@ function walker(e) {
 
     }
   }
-  /*
-  steps += turn input into a number
-  if steps equals any of the numbers in any of the objects
-  return the whole shebang
-  if steps equals or is bigger than steps total
-  end it
-  */
 }
 
 function backer(e) {
@@ -446,13 +437,6 @@ function backer(e) {
 
     }
   }
-  /*
-  steps += turn input into a negative number
-  if steps equals any of the numbers in any of the objects
-  return the whole shebang
-  if steps is less than zero
-  "you decide to go back"
-  */
 }
 
 /*to do
