@@ -244,8 +244,6 @@ function checkEnter(e) {
   }
 }
 
-//THE REASON IT'S MAKING TWO SPACES IS THAT YOU'RE ALSO PRESSING "ENTER" SO IT'S
-//INSERTING A LINE BREAK
 function makeNewInput(e) {
 
   var newInput = e.target.parentNode.cloneNode(true);
@@ -299,7 +297,13 @@ function checkInput(e) {
         "walk (x) - walk forward x steps, ",
         "back (x) - walk backwards x steps, ",
         "look - find the location of the nearest landmark, ",
-        "steps - shows you how far you've gone."
+        "whether behind or ahead. ",
+        "steps - shows you how far you've gone. ",
+        "It will take anywhere from 15 to 500 steps to get to the next landmark. ",
+        "There are around 6,000 steps total. ",
+        "(These are the exact number of steps I took). ",
+        "Walk and look around, or don't. ",
+        "However much you explore of Lumbini is up to you. "
       ];
       for (i = 0; i < text.length; i++) {
         var commandElement = document.createElement("div");
