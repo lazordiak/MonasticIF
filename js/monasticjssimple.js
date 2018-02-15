@@ -3,6 +3,8 @@
 var steps = 0;
 const stepsTotal = 6521;
 
+var isFinished = false;
+
 //the "story object" containing the pic, at which stepnumber its located, and text
 //to be displayed
 const storyText = [
@@ -187,14 +189,14 @@ const storyText = [
   best and hope it turns out ok."
   },
   {
-    picture: "images/24.jpg",
+    picture: "images/25.jpg",
     steps: 5897,
     text:
       "There is some sort of excavation here. It looks like a grave. It's \
   filling with water somehow, even though it hasn't rained in months."
   },
   {
-    picture: "images/25.jpg",
+    picture: "images/24.jpg",
     steps: 5912,
     text: "There is a twisting path leading off the main \
   road. You take it."
@@ -231,31 +233,50 @@ your backpack is your sketchbook, some medicine, and too many odds and ends to n
 function clickFocus() {
   var currentFocus = document.getElementsByClassName("currentinput")[0];
   currentFocus.focus();
+  window.scrollTo(0,document.body.scrollHeight);
 }
 
 function checkEnter(e) {
   if (e.keyCode == 13) {
     e.preventDefault();
     makeNewInput(e);
+    window.scrollTo(0,document.body.scrollHeight);
   }
 }
 
 //THE REASON IT'S MAKING TWO SPACES IS THAT YOU'RE ALSO PRESSING "ENTER" SO IT'S
 //INSERTING A LINE BREAK
 function makeNewInput(e) {
-  var newInput = e.target.cloneNode(true);
+
+  var newInput = e.target.parentNode.cloneNode(true);
   e.target.setAttribute("contenteditable", false);
   e.target.classList.remove("currentinput");
   e.target.classList.add("pastinput");
+  e.target.parentNode.classList.remove("currentprompt");
+  e.target.parentNode.classList.add("pastprompt");
+
+  if (isFinished) {
+
+    var doneElement = document.createElement("div");
+    var textNode = document.createTextNode("That's all.");
+    doneElement.appendChild(textNode);
+    document.body.appendChild(doneElement);
+
+  } else {
 
   //then the part where it checks to see if its the proper place to input
   //this or that other image
   checkInput(e);
+  //DEEP = TRUE IS THE WAY TO CLONE PARENT NODE ANNNND CHILDREN
 
   document.body.appendChild(newInput);
   document.querySelector(".currentinput").innerHTML = " ";
   document.querySelector(".currentinput").focus();
+
+  window.scrollTo(0,document.body.scrollHeight);
 }
+}
+
 
 //checks to see if the input matches any commands
 function checkInput(e) {
@@ -278,7 +299,7 @@ function checkInput(e) {
         "walk (x) - walk forward x steps, ",
         "back (x) - walk backwards x steps, ",
         "look - find the location of the nearest landmark, ",
-        "steps - shows you how far you've done."
+        "steps - shows you how far you've gone."
       ];
       for (i = 0; i < text.length; i++) {
         var commandElement = document.createElement("div");
@@ -291,6 +312,7 @@ function checkInput(e) {
     looker();
   //steps you forward
   } else if (textInput.indexOf("walk") != -1) {
+    console.log("hi");
     walker(e);
   //steps you backwards
   } else if (textInput.indexOf("back") != -1) {
@@ -333,6 +355,8 @@ function looker() {
       //so we dont do the next function
       stepsMatch = true;
 
+      window.scrollTo(0,document.body.scrollHeight);
+
     }
 
     //if none of the objects' steps match with number of steps taken, find the
@@ -340,6 +364,8 @@ function looker() {
     if (stepsMatch === false) {
 
       looker2();
+
+      window.scrollTo(0,document.body.scrollHeight);
 
     }
   }
@@ -387,9 +413,26 @@ function looker2() {
 function walker(e) {
 
   var splitInput = e.target.textContent.split(" ");
-  var numberInput = Number(splitInput[1])
 
-  steps = steps + numberInput
+  if (isNaN(splitInput[1])) {
+    console.log('wrong');
+    var numElement = document.createElement("div");
+    var textNode = document.createTextNode("Sorry, that's not a number.");
+    numElement.appendChild(textNode);
+    document.body.appendChild(numElement);
+  } else {
+    var numberInput = Number(splitInput[1]);
+    steps = steps + numberInput;
+  }
+
+  if (steps > stepsTotal) {
+    var forwardElement = document.createElement("div");
+    var textNode = document.createTextNode("You go inside. The End.");
+    forwardElement.appendChild(textNode);
+    document.body.appendChild(forwardElement);
+
+    isFinished = true;
+  }
 
   for (i = 0; i < storyText.length; i++) {
 
@@ -409,15 +452,33 @@ function walker(e) {
 
     }
   }
+
+  window.scrollTo(0,document.body.scrollHeight);
 }
 
 function backer(e) {
 
   var splitInput = e.target.textContent.split(" ");
-  var numberInput = Number(splitInput[1])
-  console.log(numberInput)
 
-  steps = steps - numberInput
+  if (isNaN(splitInput[1])) {
+    console.log('wrong');
+    var numElement = document.createElement("div");
+    var textNode = document.createTextNode("Sorry, that's not a number.");
+    numElement.appendChild(textNode);
+    document.body.appendChild(numElement);
+  } else {
+    var numberInput = Number(splitInput[1]);
+    steps = steps - numberInput;
+  }
+
+  if (steps < 0) {
+    var backElement = document.createElement("div");
+    var textNode = document.createTextNode("You decide to go back, instead.");
+    backElement.appendChild(textNode);
+    document.body.appendChild(backElement);
+
+    isFinished = true;
+  }
 
   for (i = 0; i < storyText.length; i++) {
 
@@ -437,6 +498,8 @@ function backer(e) {
 
     }
   }
+
+  window.scrollTo(0,document.body.scrollHeight);
 }
 
 /*to do

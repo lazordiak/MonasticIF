@@ -12,13 +12,17 @@
 </head>
 
 <body onclick="clickFocus()">
-
+<!--- just put everything after before-preload in a wrapper and
+hide the wrapper untiL domelements loaded, then hide before-preload
+and show the wrapper
 <div id="before-preload">it goes something like this...</div>
+-->
+<div id="after-preload">
 
-<div id="after-preload">As was tradition Queen Maya, when her baby was almost due,<br>
+  As was tradition Queen Maya, when her baby was almost due,<br>
   departed Kapilvastu for her father's kingdom, in order to have the child in<br>
   her father's house. Along the way, the procession stopped in Lumbini Garden<br>
-  to rest. Beneath a sala tree, the queen's birth began unexpectedly. The child<br>
+  to rest. Beneath a sala tree, the birth began unexpectedly. The child<br>
   walked seven steps, and at each step appeared a lotus flower. On the seventh<br>
   step he stopped, pointed up, and declared:<br><br>
   "I am chief of the world.<br>
@@ -28,15 +32,33 @@
   There is now no more coming to be."<br><br>
   Several things happened after this. The queen was taken back to Kapilvastu,<br>
   where she died. 2500 years later, many people built temples on the spot.<br>
+  Type 'help' for a list of commands.<br>
 <!--- so as far as i can tell you need to pass "event" because you're passing
-the entire... like the entire thing that happened, the entire event --->
+the entire... like the entire thing that happened, the entire event
 <span class="prompter">></span>
 <div class="currentinput" contenteditable="true" onkeydown="checkEnter(event)"></div>
+--->
+<div class="currentprompt">
+  <span class="pointer">></span>
+  <span class="currentinput" contenteditable="true" onkeydown="checkEnter(event)"></span>
+</div>
+
+</div>
 
 <!--- Javascript and JQuery included here --->
 <script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
 <script src='js/monasticjssimple.js'></script>
 <script>
+/*
+$(document).ready(function() {
+  $(window).load(function() {
+         $('#before-preload').hide();
+         $('#after-preload').show();
+         //var initial = $('.currentinput').first();
+         //initial.focus();
+    });
+});
+*/
   document.addEventListener("DOMContentLoaded", function(event) {
     var initial = $('.currentinput').first();
     initial.focus();
