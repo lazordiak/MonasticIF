@@ -293,6 +293,7 @@ function checkInput(e) {
       text = [
         "Commands:",
         "i - bring up inventory, ",
+        "(though it won't change). ",
         "help - bring up list of commands, ",
         "walk (x) - walk forward x steps, ",
         "back (x) - walk backwards x steps, ",
@@ -303,7 +304,7 @@ function checkInput(e) {
         "There are around 6,000 steps total. ",
         "(These are the exact number of steps I took). ",
         "Walk and look around, or don't. ",
-        "However much you explore of Lumbini is up to you. "
+        "However much you explore is up to you. "
       ];
       for (i = 0; i < text.length; i++) {
         var commandElement = document.createElement("div");
